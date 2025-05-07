@@ -1,0 +1,39 @@
+# create deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: app-space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: 861936062471.dkr.ecr.us-east-1.amazonaws.com/dev-ecr:myapp
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_IP
+              value: db-service
+---
+# creating service for myapp deployment of type ClusterIP
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+  namespace: app-space
+spec:
+  selector:
+    app: myapp
+  ports:
+    - port: 8080
+      targetPort: 8080
+  # type: ClusterIP
+  type: NodePort

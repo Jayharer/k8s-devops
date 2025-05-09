@@ -46,4 +46,4 @@ spec:
     - port: 27017
       targetPort: 27017
       nodePort: 31249
-  type: ClusterIP
+  type: NodePort

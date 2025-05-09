@@ -14,6 +14,8 @@ spec:
       labels:
         app: myapp
     spec:
+      imagePullSecrets:
+        - name: ecr-creds
       containers:
         - name: myapp
           image: 861936062471.dkr.ecr.us-east-1.amazonaws.com/dev-ecr:myapp
@@ -35,5 +37,5 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
-  # type: ClusterIP
+      nodePort: 32360
   type: NodePort

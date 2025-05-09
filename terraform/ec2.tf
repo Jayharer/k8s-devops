@@ -1,5 +1,5 @@
 # create ec2 instance master
-resource "aws_instance" "first-instance" {
+resource "aws_instance" "master" {
   ami                         = "ami-084568db4383264d4"
   instance_type               = "t3.small" # 2vCpu, 2Gb RAM
   key_name                    = aws_key_pair.ec2-key-pair.key_name

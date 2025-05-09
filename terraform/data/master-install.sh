@@ -17,6 +17,7 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 apt install containerd -y 
 mkdir -p /etc/containerd 
 containerd config default | sed 's/SystemdCgroup = false/SystemdCgroup = true/' | tee /etc/containerd/config.toml
+sed -i 's|registry.k8s.io/pause:3.8|registry.k8s.io/pause:3.10|g' /etc/containerd/config.toml
 systemctl restart containerd
 
 # Kubernetes requires IP forwarding to be enabled so that pods and 

@@ -6,9 +6,8 @@ resource "aws_iam_role" "ec2-role" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = "sts:AssumeRole"
         Effect = "Allow"
-        Sid    = ""
+        Action = "sts:AssumeRole"
         Principal = {
           Service = "ec2.amazonaws.com"
         }
@@ -26,8 +25,8 @@ resource "aws_iam_role_policy" "ec2-role-policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action   = "*"
         Effect   = "Allow"
+        Action   = "*"
         Resource = "*"
       },
     ]

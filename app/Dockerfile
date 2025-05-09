@@ -13,7 +13,7 @@ RUN npm install text-encoding
 COPY . .
 
 # Expose app port
-EXPOSE 8080
+EXPOSE 3000
 
-# run application on 8080 port
+# run application on 3000 port
 CMD ["node", "index.js"]

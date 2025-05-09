@@ -1,27 +1,27 @@
 # security group for alb
-# resource "aws_security_group" "alb-sg" {
-#   name        = "alb-sg"
-#   vpc_id      = aws_vpc.dev_vpc.id
-#   description = "security group that allows http connection"
+resource "aws_security_group" "alb-sg" {
+  name        = "alb-sg"
+  vpc_id      = aws_vpc.dev_vpc.id
+  description = "security group that allows http connection"
 
-#   tags = {
-#     Name = "alb-sg"
-#   }
-# }
+  tags = {
+    Name = "alb-sg"
+  }
+}
 
-# resource "aws_vpc_security_group_ingress_rule" "alb-sg-allow-http" {
-#   security_group_id = aws_security_group.alb-sg.id
-#   cidr_ipv4         = "0.0.0.0/0"
-#   from_port         = 80
-#   to_port           = 80
-#   ip_protocol       = "tcp"
-# }
+resource "aws_vpc_security_group_ingress_rule" "alb-sg-allow-http" {
+  security_group_id = aws_security_group.alb-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  to_port           = 80
+  ip_protocol       = "tcp"
+}
 
-# resource "aws_vpc_security_group_egress_rule" "alb-sg-allow-egress" {
-#   security_group_id = aws_security_group.alb-sg.id
-#   cidr_ipv4         = "0.0.0.0/0"
-#   ip_protocol       = "-1"
-# }
+resource "aws_vpc_security_group_egress_rule" "alb-sg-allow-egress" {
+  security_group_id = aws_security_group.alb-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1"
+}
 
 # security group for ec2 
 resource "aws_security_group" "ec2-sg" {
